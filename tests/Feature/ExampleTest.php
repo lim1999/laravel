@@ -12,10 +12,18 @@ class ExampleTest extends TestCase
      *vendor/bin/phpunit --filter 'tests\\Feautes\\ExampleTest
      * @return void
      */
-    public function testBasicTest()
+    public function testProductsCategories()
     {
-        $response = $this->get('/contact');
+        $response = $this->get('/products_categories');
 
+        $response->assertStatus(200);
+    }
+    public function testProductsStatuses(){
+        $response=$this->get('/products_statuses');
+        $response->assertStatus(200);
+    }
+    public function testProduct(){
+        $response=$this->get('/products');
         $response->assertStatus(200);
     }
 }

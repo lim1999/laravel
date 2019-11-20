@@ -3,32 +3,27 @@
 namespace Tests\Feature\Routes;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class webTest extends TestCase
+class WebTest extends TestCase
 {
     /**
-     * A basic feature test example.
-     *vendor/bin/phpunit --filter 'Tests\\Feature\\Routes\\webTest'
+     * A basic test example.
+     *vendor/bin/phpunit --filter 'tests\\Feature\\WebTest
      * @return void
      */
-    public function productCategories()
+    public function testProductsCategories()
     {
-        $response = $this->get('/product_categories');
+        $response = $this->get('/products_categories');
 
         $response->assertStatus(200);
     }
-    public function productStatuses()
-    {
-        $response = $this->get('/product_statuses');
-
+    public function testProductsStatuses(){
+        $response=$this->get('/products_statuses');
         $response->assertStatus(200);
     }
-    public function products()
-    {
-        $response = $this->get('/products');
-
+    public function testProduct(){
+        $response=$this->get('/products');
         $response->assertStatus(200);
     }
 }
