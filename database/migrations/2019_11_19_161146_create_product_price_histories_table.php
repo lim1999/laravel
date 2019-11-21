@@ -18,12 +18,12 @@ class CreateProductPriceHistoriesTable extends Migration
             $table->string('rent_price')->nullable();
             $table->string('list_price')->nullable();
             $table->string('sale_price')->nullable();
-            $table->string('sole_price')->nullable();
+            $table->string('sold_price')->nullable();
             $table->string('profile')->nullable();
             $table->string('galleries')->nullable();
-            $table->string('create_by')->nullable();
+            $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-            $table->string('create_at')->nullable();
+            $table->string('created_at')->nullable();
             $table->string('updated_at')->nullable();
         });
     }

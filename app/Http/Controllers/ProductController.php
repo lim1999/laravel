@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -13,7 +15,22 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+       // $create = \App\Models\Product::create([ 'name' => 'dara', 'rent_price' => '100', 'list_price' => '120','sole_price'=>'140']);
+       // $product = \App\Models\Product::find($create->id);
+        // return response()->json([
+        //     'name'=>$product->name,
+        // ]);
+        // DB::table('products')->insert([
+        //     'name' => 'dara', 
+        //     'rent_price' => '100', 
+        //     'list_price' => '120',
+        //     'sole_price'=>'140',
+        // ]);
+        
+
+        $data=Product::latest()->get();
+        // return response()->json($data);
+            return view('product.index',compact('data'));
     }
 
     /**
@@ -23,7 +40,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('product.createForm');
     }
 
     /**
@@ -34,7 +52,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $create=Product::create($request->all());
+        $product=new Product();
+        $product->name=$request->input('txt_name');
+        $product->rent_price=$request->input('txt_rent_price');
+        $product->list_price=$request->input('txt_list_price');
+        $product->sale_price=$request->input('txt_sale_price');
+        $product->sold_price=$request->input('txt_sold_price');
+        $product->save();
+        return redirect('/products');
     }
 
     /**
