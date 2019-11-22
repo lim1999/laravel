@@ -12,18 +12,18 @@ class ExampleTest extends TestCase
      *vendor/bin/phpunit --filter 'tests\\Feautes\\ExampleTest
      * @return void
      */
-    public function testProductsCategories()
-    {
-        $response = $this->get('/products_categories');
+    // public function testProductsCategories()
+    // {
+    //     $response = $this->get('/products_categories');
 
-        $response->assertStatus(200);
-    }
-    public function testProductsStatuses(){
-        $response=$this->get('/products_statuses');
-        $response->assertStatus(200);
-    }
+    //     $response->assertStatus(200);
+    // }
+    // public function testProductsStatuses(){
+    //     $response=$this->get('/products_statuses');
+    //     $response->assertStatus(200);
+    // }
     public function testProduct(){
-        $response=$this->get('/products');
+        $response=$this->get('laravel_test/products');
         $response->assertStatus(200);
     }
 }

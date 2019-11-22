@@ -12,7 +12,7 @@ class ProductsTable extends Seeder
     public function run()
     {
         DB::table('products')->insert([
-            'name'=>'limm',
+            'name'=>'',
         ]);
     }
 }

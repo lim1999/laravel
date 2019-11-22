@@ -18,7 +18,7 @@ class Prodcut_CategoriesTable extends Seeder
         };
         if(!DB::table('Product_Categories')->where('name','Speaker')->exists()){
             DB::table('Product_Categories')->insert([
-                'name'=>'Speaker', 'create_at'=>'111',
+                'name'=>'Speaker', 
             ]);
         };
         if(!DB::table('Product_Categories')->where('name','tablet')->exists()){

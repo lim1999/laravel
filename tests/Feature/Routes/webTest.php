@@ -9,21 +9,21 @@ class WebTest extends TestCase
 {
     /**
      * A basic test example.
-     *vendor/bin/phpunit --filter 'tests\\Feature\\WebTest
+     *vendor/bin/phpunit --filter 'tests\\Feature\\Routes\\WebTest'
      * @return void
      */
-    public function testProductsCategories()
-    {
-        $response = $this->get('/products_categories');
+    // public function testProductsCategories()
+    // {
+    //     $response = $this->get('/productsCategories');
 
-        $response->assertStatus(200);
-    }
-    public function testProductsStatuses(){
-        $response=$this->get('/products_statuses');
-        $response->assertStatus(200);
-    }
+    //     $response->assertStatus(200);
+    // }
+    // public function testProductsStatuses(){
+    //     $response=$this->get('/prductsStatuses');
+    //     $response->assertStatus(200);
+    // }
     public function testProduct(){
-        $response=$this->get('/products');
+        $response=$this->get('products');
         $response->assertStatus(200);
     }
 }
