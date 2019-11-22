@@ -11,7 +11,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <button class="btn btn-default"><a href="{{route('products.create')}}">Create</a></button>    
+    <a href="{{route('products.create')}}">Create</a>
+    <a href="{{route('productHistories.index')}}">Product_histories</a>    
     <table class="table">
         <thead class="thead-light">
         <tr>
@@ -27,7 +28,7 @@
         <tbody>
         @foreach($product as $show)
             <tr>    
-                <td>{{$show->id}}</td>
+                <td>{{$show->code}}</td>
                 <td>{{$show->name}}</td>
                 <td>{{$show->rent_price}}</td>
                 <td>{{$show->list_price}}</td>

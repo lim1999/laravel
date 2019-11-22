@@ -19,12 +19,12 @@ class CreateProducts extends Migration
             $table->float('rent_price');
             $table->float('list_price');
             $table->float('sale_price');
-            $table->float('sole_price');
+            $table->float('sold_price');
             $table->string('profile')->nullable();
           $table->string('galleries')->nullable();
-            $table->string('create_by')->nullable();
+            $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-            $table->dateTime('create_at')->nullable();
+            $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
         });
     }

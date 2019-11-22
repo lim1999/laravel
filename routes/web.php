@@ -11,12 +11,13 @@
 |
 */
 Route::resource('contact','ContactController');
-
+Route::resource('products','ProductController');
 Route::resource('productsCategories','ProductCategoriesController');
 Route::resource('prductsStatuses','ProductStatusesController');
+Route::resource('productHistories','ProductHistoriesController');
 Route::get('/', function () {
     return view('welcome');
 });
-Route::prefix('laravel_test')->group(function(){
-    Route::resource('products','ProductController');
-});
+// Route::prefix('laravel_test')->group(function(){
+    
+// });

@@ -15,6 +15,6 @@ class Product extends Model
         'sold_price'
     ];
     public function getCodeAttribute(){
-        
+        return str_pad($this->id,4,"0",STR_PAD_LEFT);
     }
 }
