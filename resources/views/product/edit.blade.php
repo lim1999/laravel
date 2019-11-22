@@ -26,9 +26,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Rest Price</label>
+            <label class="col-sm-2 control-label">Rent Price</label>
             <div class="col-sm-5">
-            <input type="txet" class="form-control" name="txt_rent_price" value="{{$product->rent_name}}">
+            <input type="txet" class="form-control" name="txt_rent_price" value="{{$product->rent_price}}">
             </div>
         </div>
         <div class="form-group">
@@ -46,7 +46,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Sole Price</label>
             <div class="col-sm-5">
-            <input type="txet" class="form-control" name="txt_sold_price" value="{{$product->sole_price}}">
+            <input type="txet" class="form-control" name="txt_sold_price" value="{{$product->sold_price}}">
             </div>
         </div>
         <div class="form-group">
