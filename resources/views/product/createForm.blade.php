@@ -15,36 +15,36 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form class="form-horizontal" action="{{ action('ProductController@store') }}" method="post">
-        {{csrf_field()}}
+    <form class="form-horizontal" action="{{route('products.store')}}" method="post">
+        @csrf
         <div class="form-group">
             <label class="col-sm-2 control-label">Name</label>
             <div class="col-sm-5">
-            <input type="text" class="form-control" name="txt_name">
+            <input type="text" class="form-control" name="name">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Rest Price</label>
             <div class="col-sm-5">
-            <input type="txet" class="form-control" name="txt_rent_price">
+            <input type="txet" class="form-control" name="rent_price">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">List_price</label>
             <div class="col-sm-5">
-            <input type="text" class="form-control" name="txt_list_price">
+            <input type="text" class="form-control" name="list_price">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Sale Price</label>
             <div class="col-sm-5">
-            <input type="txet" class="form-control" name="txt_sale_price">
+            <input type="txet" class="form-control" name="sale_price">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Sole Price</label>
             <div class="col-sm-5">
-            <input type="txet" class="form-control" name="txt_sold_price">
+            <input type="txet" class="form-control" name="sold_price">
             </div>
         </div>
         <div class="form-group">

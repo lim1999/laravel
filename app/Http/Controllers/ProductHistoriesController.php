@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
+use App\Models\Product_price_histoires;
 use Illuminate\Support\Facades\DB;
 
 class ProductHistoriesController extends Controller

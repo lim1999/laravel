@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Product_price_histoires;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -29,7 +30,6 @@ class ProductController extends Controller
         
 
         $product=Product::latest()->get();
-        // return response()->json($data);
             return view('product.index',compact('product'));
     }
 
@@ -52,15 +52,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // $create=Product::create($request->all());
-        $product=new Product();
-        $product->name=$request->input('txt_name');
-        $product->rent_price=$request->input('txt_rent_price');
-        $product->list_price=$request->input('txt_list_price');
-        $product->sale_price=$request->input('txt_sale_price');
-        $product->sold_price=$request->input('txt_sold_price');
-        $product->save();
-        return redirect('/products');
+        // save into products table
+        $product = Product::create($request->all());
+        // save into product_price_histories
+        $product_history             = new Product_price_histoires();
+        $product_history->rent_price = $product->rent_price;
+        $product_history->list_price = $product->list_price;
+        $product_history->sale_price = $product->sale_price;
+        $product_history->sold_price = $product->sold_price;
+        $product_history->product_id = $product->id;
+        $product_history->save();
+        return redirect('products')->with('success', 'Data Added successfully.');
     }
 
     /**
