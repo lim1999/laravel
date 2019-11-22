@@ -17,4 +17,7 @@ class Product extends Model
     public function getCodeAttribute(){
         return str_pad($this->id,4,"0",STR_PAD_LEFT);
     }
+    public function productRelationship(){
+        return $this->hasMany('App\Models\Product_price_histoires','product_id');
+    }
 }

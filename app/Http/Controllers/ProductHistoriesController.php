@@ -15,7 +15,7 @@ class ProductHistoriesController extends Controller
      */
     public function index()
     {
-        return view('');
+        return view('product.ViewProductHistories');
     }
 
     /**
