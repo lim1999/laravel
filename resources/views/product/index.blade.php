@@ -21,17 +21,26 @@
             <th>list Price</th>
             <th>Sale Price</th>
             <th>Sold Price</th>
+            <th>Status</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($data as $show)
+        @foreach($product as $show)
             <tr>    
                 <td>{{$show->id}}</td>
-                <th>{{$show->name}}</th>
-                <th>{{$show->rent_price}}</th>
-                <th>{{$show->list_price}}</th>
-                <th>{{$show->sale_price}}</th>
-                <th>{{$show->sold_price}}</th>                 
+                <td>{{$show->name}}</td>
+                <td>{{$show->rent_price}}</td>
+                <td>{{$show->list_price}}</td>
+                <td>{{$show->sale_price}}</td>
+                <td>{{$show->sold_price}}</td>
+                <td>
+                    <form action="{{ route('products.destroy' , $show->id ) }}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <button>Delete</button>
+                        <a href="{{route('products.edit',$show->id)}}" class="">Edit</a>
+                    </form>
+                </td>                 
             </tr>
         @endforeach
         </tbody>

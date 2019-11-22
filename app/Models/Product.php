@@ -14,4 +14,7 @@ class Product extends Model
         'sale_price',
         'sold_price'
     ];
+    public function getCodeAttribute(){
+        
+    }
 }

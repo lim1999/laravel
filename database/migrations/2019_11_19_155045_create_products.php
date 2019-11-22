@@ -16,16 +16,16 @@ class CreateProducts extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
-            $table->string('rent_price')->nullable();
-            $table->string('list_price')->nullable();
-            $table->string('sale_price')->nullable();
-            $table->string('sole_price')->nullable();
+            $table->float('rent_price');
+            $table->float('list_price');
+            $table->float('sale_price');
+            $table->float('sole_price');
             $table->string('profile')->nullable();
-            $table->string('galleries')->nullable();
+          $table->string('galleries')->nullable();
             $table->string('create_by')->nullable();
             $table->string('updated_by')->nullable();
-            $table->string('create_at')->nullable();
-            $table->string('updated_at')->nullable();
+            $table->dateTime('create_at')->nullable();
+            $table->dateTime('updated_at')->nullable();
         });
     }
 

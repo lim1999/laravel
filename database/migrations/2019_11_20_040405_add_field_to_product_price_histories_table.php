@@ -13,8 +13,8 @@ class AddFieldToProductPriceHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::table('products_price_histories', function (Blueprint $table) {
-            //
+        Schema::table('product_price_histories', function (Blueprint $table) {
+            $table->integer('product_id');
         });
     }
 

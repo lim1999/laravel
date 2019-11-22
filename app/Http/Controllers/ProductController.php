@@ -28,9 +28,9 @@ class ProductController extends Controller
         // ]);
         
 
-        $data=Product::latest()->get();
+        $product=Product::latest()->get();
         // return response()->json($data);
-            return view('product.index',compact('data'));
+            return view('product.index',compact('product'));
     }
 
     /**
@@ -82,7 +82,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product=Product::find($id);
+        return view('product.edit',compact('product'));
     }
 
     /**
@@ -105,6 +106,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product=Product::find($id);
+        $product->delete();
+        return redirect('/products');
     }
 }

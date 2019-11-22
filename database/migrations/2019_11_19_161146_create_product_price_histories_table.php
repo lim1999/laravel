@@ -15,16 +15,16 @@ class CreateProductPriceHistoriesTable extends Migration
     {
         Schema::create('product_price_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('rent_price')->nullable();
-            $table->string('list_price')->nullable();
-            $table->string('sale_price')->nullable();
-            $table->string('sold_price')->nullable();
+            $table->float('rent_price');
+            $table->float('list_price');
+            $table->float('sale_price');
+            $table->float('sold_price');
             $table->string('profile')->nullable();
             $table->string('galleries')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-            $table->string('created_at')->nullable();
-            $table->string('updated_at')->nullable();
+            $table->datetime('created_at')->nullable();
+            $table->datetime('updated_at')->nullable();
         });
     }
 

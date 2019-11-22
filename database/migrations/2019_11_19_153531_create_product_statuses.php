@@ -15,9 +15,9 @@ class CreateProductStatuses extends Migration
     {
         Schema::create('product_statuses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('create_at')->nullable();
-            $table->string('updated_at')->nullable();
+            $table->string('name');
+            $table->datetime('create_at');
+            $table->datetime('updated_at');
         });
     }
 
