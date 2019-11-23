@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['namespace' => 'Front'],function(){
+    Route::resource('property-type','PropertyTypeController');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
