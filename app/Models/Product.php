@@ -8,6 +8,7 @@ class Product extends Model
 {
     protected  $table='products';
     protected $fillable=[
+        'id',
         'name',
         'rent_price', 
         'list_price',
@@ -20,5 +21,9 @@ class Product extends Model
     }
     public function productRelationship(){
         return $this->hasMany('App\Models\Product_price_histoires','product_id');
+    }
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtoupper($value);
     }
 }

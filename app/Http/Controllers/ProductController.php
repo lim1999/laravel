@@ -98,13 +98,13 @@ class ProductController extends Controller
     public function update(Request $request,Product $product)
     {
         $product->update($request->only([
-            'name', 'name',
-            'rent_price', 'rent_price',
-            'list_price', 'list_price',
-            'sale_price', 'sale_price',
-            'sold_price', 'sold_price',
-            
+            'name', 
+            'rent_price',
+            'list_price',
+            'sale_price',
+            'sold_price',   
         ]));
+        // dd($request->all());
         $product->product_price_histories()->create([
             'rent_price', 'rent_price',
             'list_price', 'list_price',
