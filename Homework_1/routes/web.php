@@ -17,6 +17,11 @@ Route::get('/', function () {
 
 Route::group(['namespace' => 'Front'],function(){
     Route::resource('property-type','PropertyTypeController');
+    Route::resource('property-status','PropertyStatusController');
+    Route::resource('property','PropertyController');
+    Route::resource('property-price-history','PropertyPriceHistoryController');
+    Route::resource('shape','ShapeController');
+    Route::resource('zone','ZoneController');
 });
 
 Auth::routes();

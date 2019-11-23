@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCantactTable extends Migration
+class CreatePropertyStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateCantactTable extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('property_statuses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
+            $table->dateTime('created_at')->nullable();
+            $table->dateTime('updated_at')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -26,6 +31,6 @@ class CreateCantactTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cantact');
+        Schema::dropIfExists('property_statuses');
     }
 }
