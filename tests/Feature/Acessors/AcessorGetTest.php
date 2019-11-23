@@ -10,13 +10,15 @@ class AcessorGetTest extends TestCase
 {
     /**
      * A basic feature test example.
-     *
+     *  vendor/bin/phpunit --filter 'tests\\Feature\\Acessors\\AcessorGetTest'
      * @return void
      */
     public function testCode()
     {
-        $response = $this->get('/');
+        $product=Product::find(11);
+        $expact=0011;
+        $this->assertEquals($expact,$product->Code);
 
-        $response->assertStatus(200);
+        
     }
 }

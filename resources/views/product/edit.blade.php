@@ -11,7 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form class="form-horizontal" action="{{ action('ProductController@store') }}" method="post">
+<form class="form-horizontal" action="{{ route('products.update', $data->id) }}" method="post">
         {{csrf_field()}}
         <div class="form-group">
             <label class="col-sm-2 control-label">Name</label>
