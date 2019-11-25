@@ -18,7 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-// Route::group(['namespace' => 'Front'], function () {
-//     Route::resource('property', 'PropertyController');
+//Route::group(['middleware' => 'Auth'], function () {
+    Route::resource('/property', 'Front\PropertyController')->middleware('auth');
+    Route::resource('/property-type', 'Front\PropertyTypeController')->middleware('auth');
+    Route::resource('/property-status', 'Front\PropertyStatusController')->middleware('auth');
+    Route::resource('/shape', 'Front\ShapeController')->middleware('auth');
+    Route::resource('/zone', 'Front\ZoneController')->middleware('auth');
+    Route::resource('/property-price-history', 'Front\PropertyPriceHistoryController')->middleware('auth'); 
 // });
-Route::resource('/property', 'PropertyController');
+//Route::resource('property', 'Front\PropertyController');
