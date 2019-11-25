@@ -33,7 +33,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-primary">Property</button>
+                            <button type="button" class="btn btn-primary">Property Status</button>
+                            <button type="button" class="btn btn-primary">Property  Type</button>
+                            <button type="button" class="btn btn-primary">Shape</button>
+                            <button type="button" class="btn btn-primary">Zone</button>
+                            <button type="button" class="btn btn-primary">Property Price History</button>
+                            {{-- <a class="btn btn" href="{{ route('register') }}">{{ __('Property') }}</a> --}}
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
