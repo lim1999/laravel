@@ -18,11 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::group(['namespace' => 'Front'], function () {
-    Route::resource('property', 'PropertyController');
-    Route::resource('property-type', 'PropertyTypeController');
-    Route::resource('property-status', 'PropertyStatusController');
-    Route::resource('shape', 'ShapeController');
-    Route::resource('zone', 'ZoneController');
-    Route::resource('property-price-history', 'PropertyPriceHistoryController');
-});
+// Route::group(['namespace' => 'Front'], function () {
+//     Route::resource('property', 'PropertyController');
+// });
+Route::resource('/property', 'PropertyController');

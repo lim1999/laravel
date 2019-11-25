@@ -23,13 +23,13 @@ class WebTest extends TestCase
         $response->assertStatus(200);
     }
     public function testProduct(){
-        $response=$this->get('products');
+        $response=$this->get('Front\products');
         $response->assertStatus(200);
     }
-    public function testCode()
-    {
-        $product=Product::find(16);
-        $expact="0016";
-        $this->assertEquals($expact,$product->Code);   
-    }
+    // public function testCode()
+    // {
+    //     $product=Product::find(16);
+    //     $expact="0016";
+    //     $this->assertEquals($expact,$product->Code);   
+    // }
 }

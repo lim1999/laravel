@@ -11,7 +11,7 @@
 |
 */
 Route::resource('contact','ContactController');
-Route::resource('products','ProductController');
+Route::resource('products','Front\ProductController');
 Route::resource('productsCategories','ProductCategoriesController');
 Route::resource('prductsStatuses','ProductStatusesController');
 Route::resource('productHistories','ProductHistoriesController');

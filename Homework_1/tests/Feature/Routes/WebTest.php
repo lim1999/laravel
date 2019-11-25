@@ -19,35 +19,35 @@ class WebTest extends TestCase
 
         $response->assertSuccessful();
     }
-    public function testPropertyType()
-    {
-        $response = $this->get('/property-type');
+    // public function testPropertyType()
+    // {
+    //     $response = $this->get('/property-type');
 
-        $response->assertStatus(200);
-    }
-    public function testPropertyStatues()
-    {
-        $response = $this->get('/property-status');
+    //     $response->assertStatus(200);
+    // }
+    // public function testPropertyStatues()
+    // {
+    //     $response = $this->get('/property-status');
 
-        $response->assertStatus(200);
-    }
-    public function testShape()
-    {
-        $response = $this->get('/shape');
+    //     $response->assertStatus(200);
+    // }
+    // public function testShape()
+    // {
+    //     $response = $this->get('/shape');
 
-        $response->assertStatus(200);
-    }
-    public function testZone()
-    {
-        $response = $this->get('/zone');
+    //     $response->assertStatus(200);
+    // }
+    // public function testZone()
+    // {
+    //     $response = $this->get('/zone');
 
-        $response->assertStatus(200);
-    }
-    public function testPropertyPriceHistory()
-    {
-        $response = $this->get('/property-price-history');
+    //     $response->assertStatus(200);
+    // }
+    // public function testPropertyPriceHistory()
+    // {
+    //     $response = $this->get('/property-price-history');
 
-        $response->assertStatus(200);
-    }
+    //     $response->assertStatus(200);
+    // }
 
 }
