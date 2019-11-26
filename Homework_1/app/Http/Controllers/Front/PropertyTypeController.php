@@ -14,7 +14,8 @@ class PropertyTypeController extends Controller
      */
     public function index()
     {
-        //
+        $data=PropertyType::latest()->get();
+        return view('types.index',compact('data'));
     }
 
     /**
@@ -35,7 +36,8 @@ class PropertyTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=PropertyType::create($request->all());
+        return redirect('/property-type')->with('success', 'Data Added successfully.');
     }
 
     /**
@@ -57,7 +59,8 @@ class PropertyTypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=PropertyType::find($id);
+        return view('types.edit',compact('data'));
     }
 
     /**
@@ -69,7 +72,13 @@ class PropertyTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $data->update($request->only([
+        //     'name'
+        // ]));
+        $data=PropertyType::find($id);
+        $input=$request->all();
+        $data->fill($input)->save();
+        return redirect('/property-type')->with('success', 'Data Updated successfully.');
     }
 
     /**
@@ -80,6 +89,8 @@ class PropertyTypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data=PropertyType::find($id);
+        $data->delete();
+        return redirect('/property-type')->with('success', 'Data Delete successfully.');;
     }
 }

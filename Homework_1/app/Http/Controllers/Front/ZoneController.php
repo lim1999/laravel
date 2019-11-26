@@ -14,7 +14,8 @@ class ZoneController extends Controller
      */
     public function index()
     {
-        //
+        $data=Zone::latest()->get();
+        return view('zones.index',compact('data'));
     }
 
     /**
@@ -35,7 +36,8 @@ class ZoneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=Zone::create($request->all());
+        return redirect('/zone')->with('success', 'Data Added successfully.');
     }
 
     /**
@@ -57,7 +59,8 @@ class ZoneController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=Zone::find($id);
+        return view('zones.edit',compact('data'));
     }
 
     /**
@@ -69,7 +72,10 @@ class ZoneController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=Zone::find($id);
+        $input=$request->all();
+        $data->fill($input)->save();
+        return redirect('/zone')->with('success', 'Data Updated successfully.');
     }
 
     /**
@@ -80,6 +86,8 @@ class ZoneController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data=Zone::find($id);
+        $data->delete();
+        return redirect('/zone');
     }
 }

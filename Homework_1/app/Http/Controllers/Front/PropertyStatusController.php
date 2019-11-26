@@ -14,7 +14,8 @@ class PropertyStatusController extends Controller
      */
     public function index()
     {
-        //
+        $data=PropertyStatus::latest()->get();
+        return view('/statuses.index',compact('data'));
     }
 
     /**
@@ -35,7 +36,8 @@ class PropertyStatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=PropertyStatus::create($request->all());
+        return redirect('/property-status')->with('success', 'Data Added successfully.');
     }
 
     /**
@@ -57,7 +59,8 @@ class PropertyStatusController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=PropertyStatus::find($id);
+        return view('statuses.edit',compact('data'));
     }
 
     /**
@@ -69,7 +72,10 @@ class PropertyStatusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=PropertyStatus::find($id);
+        $input=$request->all();
+        $data->fill($input)->save();
+        return redirect('/property-status')->with('success', 'Data Updated successfully.');
     }
 
     /**
@@ -80,6 +86,8 @@ class PropertyStatusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data=PropertyStatus::find($id);
+        $data->delete();
+        return redirect('/property-status')->with('success','Data Delete successfully.');
     }
 }

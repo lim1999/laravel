@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-<form action="{{ route('shapes.update', $data->id) }}" method="post">
+<form action="{{ route('shape.update', $data->id) }}" method="post">
     @csrf
     @method('PATCH')
     @if($errors->any())

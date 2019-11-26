@@ -34,6 +34,7 @@ class PropertyController extends Controller
         $statuses  = PropertyStatus::get();
         $shapes    = Shape::get();
         return view('properties.create', compact(['zones', 'types', 'statuses', 'shapes']));
+        
     }
 
     /**

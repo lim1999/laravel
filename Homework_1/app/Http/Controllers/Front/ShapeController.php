@@ -14,7 +14,8 @@ class ShapeController extends Controller
      */
     public function index()
     {
-        //
+        $data=Shape::latest()->get();
+        return view('shapes.index',compact('data'));
     }
 
     /**
@@ -35,7 +36,8 @@ class ShapeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=Shape::create($request->all());
+        return redirect('/shape')->with('success', 'Data Added successfully.');
     }
 
     /**
@@ -57,7 +59,8 @@ class ShapeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=Shape::find($id);
+        return view('shapes.edit',\compact('data'));
     }
 
     /**
@@ -69,7 +72,10 @@ class ShapeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=Shape::find($id);
+        $input=$request->all();
+        $data->fill($input)->save();
+        return redirect('/shape')->with('success', 'Data Updated successfully.');
     }
 
     /**
@@ -80,6 +86,8 @@ class ShapeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data=Shape::find($id);
+        $data->delete();
+        return redirect('/shape')->with('success', 'Data Added successfully.');;
     }
 }

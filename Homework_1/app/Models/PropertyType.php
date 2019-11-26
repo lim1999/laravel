@@ -16,4 +16,7 @@ class PropertyType extends Model
     {
         return $this->belongsTo('App\Models\Property', 'property_type_id', 'id');
     }
+    public function getCodeAttribute(){
+        return str_pad($this->id,4,"0",STR_PAD_LEFT);
+    }
 }

@@ -34,13 +34,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <button type="button" class="btn btn-primary">Property</button>
-                            <button type="button" class="btn btn-primary">Property Status</button>
-                            <button type="button" class="btn btn-primary">Property  Type</button>
-                            <button type="button" class="btn btn-primary">Shape</button>
-                            <button type="button" class="btn btn-primary">Zone</button>
-                            <button type="button" class="btn btn-primary">Property Price History</button>
-                            <a class="btn btn-primary" href="{{ route('register') }}">{{ __('Property') }}</a>
+                            <a class="btn btn-primary" href="{{ route('property.index') }}">{{ __('Property') }}</a>
+                            <a class="btn btn-primary" href="{{ route('property-price-history.index') }}">{{ __('Property Price History') }}</a>
+                            <a class="btn btn-primary" href="{{ route('property-status.index') }}">{{ __('Property Status') }}</a>
+                            <a class="btn btn-primary" href="{{ route('property-type.index') }}">{{ __('Property Type') }}</a>
+                            <a class="btn btn-primary" href="{{ route('zone.index') }}">{{ __('Zone') }}</a>
+                            <a class="btn btn-primary" href="{{ route('shape.index') }}">{{ __('Shape') }}</a>
+                            
                         </li>
                     </ul>
 

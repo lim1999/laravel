@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-<form action="{{ route('property_types.store') }}" method="post">
+<form action="{{ route('property-type.store') }}" method="post">
     @csrf
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -27,18 +27,18 @@
 <br>
 <table class="table table-bordered table-striped">
     <thead>
-        <th>Name</th>
         <th>Code</th>
+        <th>Name</th>
         <th>Action</th>
     </thead>
     <tbody>
     @foreach($data as $row)
         <tr>
-            <td>{{ $row->name }}</td>
             <td>{{ $row->code }}</td>
+            <td>{{ $row->name }}</td>
             <td>
-                <form action="{{ route('property_types.destroy', $row->id) }}" method="post">
-                    <a href="{{ route('property_types.edit', $row->id) }}" class="btn btn-warning">Edit</a>
+                <form action="{{ route('property-type.destroy', $row->id) }}" method="post">
+                    <a href="{{ route('property-type.edit', $row->id) }}" class="btn btn-warning">Edit</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>

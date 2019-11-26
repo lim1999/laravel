@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-{{-- <a href="{{ route('properties.create') }}" class="btn btn-info">Add New</a> --}}
+<a href="{{ route('property.create') }}" class="btn btn-info">Add New</a>
 <br>
 <br>
 <table class="table table-bordered table-striped">

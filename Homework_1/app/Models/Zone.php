@@ -16,4 +16,8 @@ class Zone extends Model
     {
         return $this->belongsTo('App\Models\Property', 'zone_id', 'id');
     }
+    public function getCodeAttribute()
+    {
+        return str_pad($this->id, 4, "0", STR_PAD_LEFT);
+    }
 }

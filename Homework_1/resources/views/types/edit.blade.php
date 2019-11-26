@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-<form action="{{ route('property_types.update', $data->id) }}" method="post">
+<form action="{{ route('property-type.update', $data->id) }}" method="post">
     @csrf
     @method('PATCH')
     @if($errors->any())
