@@ -40,7 +40,7 @@
                             <button type="button" class="btn btn-primary">Shape</button>
                             <button type="button" class="btn btn-primary">Zone</button>
                             <button type="button" class="btn btn-primary">Property Price History</button>
-                            {{-- <a class="btn btn" href="{{ route('register') }}">{{ __('Property') }}</a> --}}
+                            <a class="btn btn-primary" href="{{ route('register') }}">{{ __('Property') }}</a>
                         </li>
                     </ul>
 

@@ -3,7 +3,6 @@
 
 <div class="container">
 {{-- <a href="{{ route('properties.create') }}" class="btn btn-info">Add New</a> --}}
-<button type="button" class="btn btn-primary">Create</button>
 <br>
 <br>
 <table class="table table-bordered table-striped">
@@ -20,7 +19,7 @@
         <th>Sold Price</th>
         <th>Action</th>
     </thead>
-    {{-- <tbody>
+    <tbody>
     @foreach($data as $row)
         <tr>
             <td>{{ $row->name }}</td>
@@ -43,7 +42,7 @@
             </td>
         </tr>
     @endforeach
-    </tbody> --}}
+    </tbody>
 </table>
 </div>
 @endsection

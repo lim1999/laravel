@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Property;
+use App\Models\Zone;
+use App\Models\PropertyType;
+use App\Models\PropertyStatus;
+use App\Models\Shape;
 class PropertyController extends Controller
 {
     /**
@@ -14,8 +18,8 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        // dd('hello');
-        return view('properties.index');
+        $data  = Property::with(['zone'])->get();
+        return view('properties.index', compact('data'));
     }
 
     /**
@@ -25,7 +29,11 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        //
+        $zones     = Zone::get();
+        $types     = PropertyType::get();
+        $statuses  = PropertyStatus::get();
+        $shapes    = Shape::get();
+        return view('properties.create', compact(['zones', 'types', 'statuses', 'shapes']));
     }
 
     /**

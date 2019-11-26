@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Property;
+use App\Models\PropertyPriceHistory;
 class PropertyPriceHistoryController extends Controller
 {
     /**
