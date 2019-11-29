@@ -43,9 +43,17 @@ class PropertyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProperty $request, Property $property)
     {
-        //
+        $validated = $request->validated();
+        $property->create($request->all());
+        $property->property_price_histories()->create($request->only([
+            'rent_price', 'rent_price',
+            'list_price', 'list_price',
+            'sale_price', 'sale_price',
+            'sold_price', 'sold_price',
+        ]));
+        return redirect('properties')->with('success', 'Data Added successfully.');
     }
 
     /**
