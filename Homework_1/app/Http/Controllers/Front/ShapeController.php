@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Shape;
+use App\Models\PropertyStatus;
 class ShapeController extends Controller
 {
     /**
@@ -14,8 +15,9 @@ class ShapeController extends Controller
      */
     public function index()
     {
-        $data=Shape::latest()->get();
-        return view('shapes.index',compact('data'));
+        $data['data'] = PropertyStatus::get();
+        $data['url']  = route('property-status.store');
+        return view('types.index', $data);
     }
 
     /**
@@ -36,8 +38,9 @@ class ShapeController extends Controller
      */
     public function store(Request $request)
     {
-        $data=Shape::create($request->all());
-        return redirect('/shape')->with('success', 'Data Added successfully.');
+        $request->validate(['name' => 'required']);
+        $data = PropertyStatus::create($request->all());
+        return redirect('property-status')->with('success', 'Data Added successfully.');
     }
 
     /**
@@ -59,8 +62,8 @@ class ShapeController extends Controller
      */
     public function edit($id)
     {
-        $data=Shape::find($id);
-        return view('shapes.edit',\compact('data'));
+        $data = PropertyStatus::findOrFail($id);
+        return view('statuses.edit', compact('data'));
     }
 
     /**
@@ -72,10 +75,9 @@ class ShapeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data=Shape::find($id);
-        $input=$request->all();
-        $data->fill($input)->save();
-        return redirect('/shape')->with('success', 'Data Updated successfully.');
+        $request->validate(['name' => 'required']);
+        PropertyStatus::whereId($id)->update($request->only(['name', 'name']));
+        return redirect('property-status')->with('success', 'Data Updated successfully.');
     }
 
     /**
@@ -86,8 +88,8 @@ class ShapeController extends Controller
      */
     public function destroy($id)
     {
-        $data=Shape::find($id);
+        $data = Shape::findOrFail($id);
         $data->delete();
-        return redirect('/shape')->with('success', 'Data Added successfully.');;
+        return redirect('/')->with('success', 'Data is successfully deleted');
     }
 }

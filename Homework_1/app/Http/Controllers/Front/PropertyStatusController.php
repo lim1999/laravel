@@ -14,10 +14,7 @@ class PropertyStatusController extends Controller
      */
     public function index()
     {
-        // $data=PropertyStatus::latest()->get();
-        // return view('/statuses.index',compact('data'));
-        $data['statuses']=\App\Models\PropertyStatus::all();
-        return view('/statuses.index',$data);
+       
     }
 
     /**

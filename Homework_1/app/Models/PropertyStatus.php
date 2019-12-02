@@ -3,21 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Libraries\MyTypeTrait\MyTypeTrait;
 
 class PropertyStatus extends Model
 {
-    protected $table    = 'property_statuses';
-    protected $fillable = [
-        'name', 
-        'created_by',
-         'updated_by'
-        ];
+   // use MyTypeTrait;
+    protected $fillable = ['name', 'created_by', 'updated_by'];
     public function property()
     {
-        return $this->belongsTo('App\Models\Property', 'property_status_id', 'id');
+        return $this->belongsTo('App\Models\Property', 'property_status', 'id');
     }
     public function getCodeAttribute()
     {
-        return str_pad($this->id, 4, "0", STR_PAD_LEFT);
+        return str_pad($this->id, '6', '0', STR_PAD_LEFT);
     }
 }

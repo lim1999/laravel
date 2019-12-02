@@ -3,22 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Libraries\MyTypeTrait\MyTypeTrait;
 
 class PropertyPriceHistory extends Model
 {
-    protected $table    = 'property_price_histories';
-    protected $fillable = [
-        'property_id',  
-        'rent_price', 
-        'sale_price', 
-        'list_price', 
-        'sold_price', 
-        'created_by', 
-        'updated_by'
-    ];
-    public function contacts()
+	//use MyTypeTrait;
+    protected $fillable = ['property_id', 'rent_price', 'sale_price', 'list_price', 'sold_price'];
+    public function property()
     {
-        return $this->hasMany('App\Models\Property', 'property_id');
-        // return $this->hasMany('App\Comment', 'foreign_key', 'local_key');
+        return $this->belongsTo('App\Models\Property',  'property_id', 'id');
     }
 }

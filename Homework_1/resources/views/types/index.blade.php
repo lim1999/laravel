@@ -1,47 +1,26 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-<form action="{{ route('property-type.store') }}" method="post">
-    @csrf
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-	        <p>{{$message}}</p>
-        </div>
-    @endif
-    @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif  
-    <div class="form-group">
-        <label>Name</label>
-        <input type="text" name="name" class="form-control" id="">
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-</form>
-<br>
+@include('comp.alert')
+@include('comp.simple_form')
 <br>
 <table class="table table-bordered table-striped">
     <thead>
-        <th>Code</th>
-        <th>Name</th>
-        <th>Action</th>
+        <th>{{ __('messages.name') }}</th>
+        <th>{{ __('messages.code') }}</th>
+        <th>{{ __('messages.action') }}</th>
     </thead>
     <tbody>
     @foreach($data as $row)
         <tr>
-            <td>{{ $row->code }}</td>
-            <td>{{ $row->name }}</td>
+            <td>{{ @$row->name }}</td>
+            <td>{{ @$row->code }}</td>
             <td>
-                <form action="{{ route('property-type.destroy', $row->id) }}" method="post">
-                    <a href="{{ route('property-type.edit', $row->id) }}" class="btn btn-warning">Edit</a>
+                <form action="{{ route('property-type.destroy', @$row->id) }}" method="post">
+                    <a href="{{ route('property-type.edit', @$row->id) }}" class="btn btn-warning">{{ __('messages.edit') }}</a>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
                 </form>
             </td>
         </tr>

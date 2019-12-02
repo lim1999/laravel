@@ -3,47 +3,38 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Libraries\MyTypeTrait\MyTypeTrait;
 
 class Property extends Model
 {
-    protected $table    = 'properties';
-    protected $fillable = [
-        'name', 
-        'code', 
-        'property_type_id', 
-        'property_status_id', 
-        'zone_id', 
-        'shape_id', 
-        'rent_price', 
-        'sale_price', 
-        'list_price', 
-        'sold_price', 
-        'created_by', 
-        'updated_by'
-    ];
-
+    //use MyTypeTrait;
+    public static function boot()
+    {
+        parent::boot();
+        static::created(function($obj) {
+            $obj->code = str_pad($obj->id, '6', '0', STR_PAD_LEFT);
+            $obj->save();
+        });
+    }
+    protected $fillable = ['name', 'code', 'property_type_id', 'property_status_id', 'zone_id', 'shape_id', 'rent_price', 'sale_price', 'list_price', 'sold_price', 'created_by', 'updated_by'];
     public function zone()
     {
-        return $this->hasOne('App\Models\Zone', 'id', 'zone_id');
+        return $this->belongsTo('App\Models\Zone',  'zone_id', 'id');
     }
     public function shape()
     {
-        return $this->hasOne('App\Models\Shape', 'id', 'shape_id');
+        return $this->belongsTo('App\Models\Shape', 'shape_id', 'id');
     }
-    public function propertyType()
+    public function type()
     {
-        return $this->hasOne('App\Models\PropertyType', 'id', 'property_type_id');
+        return $this->belongsTo('App\Models\PropertyType', 'property_type_id', 'id');
     }
-    public function propertyStatus()
+    public function status()
     {
-        return $this->hasOne('App\Models\PropertyStatus', 'id', 'property_status_id');
+        return $this->belongsTo('App\Models\PropertyStatus', 'property_status_id', 'id');
     }
-    public function propertyPriceHistory()
+    public function property_price_histories()
     {
-        return $this->belongsTo('App\Models\PropertyPriceHistory', 'id', 'property_id');
-    }
-    public function getCodeAttribute()
-    {
-        return str_pad($this->id, 4, "0", STR_PAD_LEFT);
+        return $this->hasMany('App\Models\PropertyPriceHistory', 'property_id', 'id');
     }
 }

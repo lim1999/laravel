@@ -14,16 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::group([
+    'middleware'=>['auth'],
+    'namespace'=>'front'
+], function (){
+    Route::resource('/property', 'PropertyController');
+    Route::resource('/property-type', 'PropertyTypeController');
+    Route::resource('/property-status', 'PropertyStatusController');
+    Route::resource('/shape', 'ShapeController');
+    Route::resource('/zone', 'ZoneController');
+    Route::resource('/property-price-history', 'PropertyPriceHistoryController');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-//Route::group(['middleware' => 'Auth'], function () {
-    Route::resource('/property', 'Front\PropertyController')->middleware('auth');
-    Route::resource('/property-type', 'Front\PropertyTypeController')->middleware('auth');
-    Route::resource('/property-status', 'Front\PropertyStatusController')->middleware('auth');
-    Route::resource('/shape', 'Front\ShapeController')->middleware('auth');
-    Route::resource('/zone', 'Front\ZoneController')->middleware('auth');
-    Route::resource('/property-price-history', 'Front\PropertyPriceHistoryController')->middleware('auth'); 
-// });
-//Route::resource('property', 'Front\PropertyController');
+

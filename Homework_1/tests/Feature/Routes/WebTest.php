@@ -15,39 +15,41 @@ class WebTest extends TestCase
      */
     public function testProperty()
     {
-        $response = $this->get('/property');
-
+        $user=\Auth::loginUsingId(1);
+        $response = $this->actingAs($user)->get('/property');
         $response->assertSuccessful();
     }
-    // public function testPropertyType()
-    // {
-    //     $response = $this->get('/property-type');
+    public function testPropertyType()
+    {
+        $user=\Auth::loginUsingId(1);
+        $response = $this->actingAs($user)->get('/property-type');
+        $response->assertSuccessful();
+    }
+    public function testPropertyStatus()
+    {
+        $user=\Auth::loginUsingId(1);
+        $response = $this->actingAs($user)->get('/property-status');
+        $response->assertSuccessful();
+    }
+    public function testShape()
+    {
+        $user=\Auth::loginUsingId(1);
+        $response = $this->actingAs($user)->get('/shape');
+        $response->assertSuccessful();
+    }
+    public function testZone()
+    {
+        $user=\Auth::loginUsingId(1);
+        $response = $this->actingAs($user)->get('/zone');
+        $response->assertSuccessful();
+    }
+    public function testPropertyPriceHistory()
+    {
+        $user=\Auth::loginUsingId(1);
+        $response = $this->actingAs($user)->get('/property-price-history');
+        $response->assertSuccessful();
+    }
 
-    //     $response->assertStatus(200);
-    // }
-    // public function testPropertyStatues()
-    // {
-    //     $response = $this->get('/property-status');
-
-    //     $response->assertStatus(200);
-    // }
-    // public function testShape()
-    // {
-    //     $response = $this->get('/shape');
-
-    //     $response->assertStatus(200);
-    // }
-    // public function testZone()
-    // {
-    //     $response = $this->get('/zone');
-
-    //     $response->assertStatus(200);
-    // }
-    // public function testPropertyPriceHistory()
-    // {
-    //     $response = $this->get('/property-price-history');
-
-    //     $response->assertStatus(200);
-    // }
+    
 
 }

@@ -9,8 +9,24 @@ use App\Models\Zone;
 use App\Models\PropertyType;
 use App\Models\PropertyStatus;
 use App\Models\Shape;
+use App\Models\PropertyPriceHistory;
+use App\Http\Requests\StoreProperty;
+use App\Libraries\PropertyLib;
 class PropertyController extends Controller
 {
+
+    protected $varShare;
+    public function __construct()
+    {
+        $this->varShare = [
+            'zones'    => Zone::get(),
+            'types'    => PropertyType::get(),
+            'statuses' => PropertyStatus::get(),
+            'shapes'   => Shape::get(),
+        ];
+        view()->share($this->varShare);
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +34,7 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        $data  = Property::with(['zone'])->get();
+        $data  = Property::with(['zone', 'shape', 'status', 'type'])->get();
         return view('properties.index', compact('data'));
     }
 
@@ -29,11 +45,8 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        $zones     = Zone::get();
-        $types     = PropertyType::get();
-        $statuses  = PropertyStatus::get();
-        $shapes    = Shape::get();
-        return view('properties.create', compact(['zones', 'types', 'statuses', 'shapes']));
+        $data = ['zones', 'types', 'statuses', 'shapes'];
+        return view('properties.create', $data);
         
     }
 
@@ -48,12 +61,12 @@ class PropertyController extends Controller
         $validated = $request->validated();
         $property->create($request->all());
         $property->property_price_histories()->create($request->only([
-            'rent_price', 'rent_price',
-            'list_price', 'list_price',
-            'sale_price', 'sale_price',
-            'sold_price', 'sold_price',
+            'rent_price',
+            'list_price',
+            'sale_price',
+            'sold_price',
         ]));
-        return redirect('properties')->with('success', 'Data Added successfully.');
+        return redirect('property')->with('success', 'Data Added successfully.');
     }
 
     /**
@@ -64,7 +77,9 @@ class PropertyController extends Controller
      */
     public function show($id)
     {
-        //
+        $data         = ['zones', 'types', 'statuses', 'shapes'];
+        $data['data'] = Property::findOrFail($id);
+        return view('properties.show', $data);
     }
 
     /**
@@ -75,7 +90,9 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data         = ['zones', 'types', 'statuses', 'shapes'];
+        $data['data'] = Property::findOrFail($id);
+        return view('properties.edit', $data);
     }
 
     /**
@@ -87,7 +104,25 @@ class PropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validated();
+        $property->update($request->only([
+            'name', 'name',
+            'property_type_id', 'property_type_id',
+            'zone_id', 'zone_id',
+            'preperty_status_id', 'preperty_status_id',
+            'shape_id', 'shape_id',
+            'rent_price', 'rent_price',
+            'list_price', 'list_price',
+            'sale_price', 'sale_price',
+            'sold_price', 'sold_price',
+        ]));
+        $property->property_price_histories()->create($request->only([
+            'rent_price', 'rent_price',
+            'list_price', 'list_price',
+            'sale_price', 'sale_price',
+            'sold_price', 'sold_price',
+        ]));
+        return redirect('property')->with('success', 'Data Updated successfully.');
     }
 
     /**
@@ -98,6 +133,8 @@ class PropertyController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $data = Property::findOrFail($id);
+        $data->delete();
+        return redirect('property')->with('success', 'Data is successfully deleted');
     }
 }

@@ -14,8 +14,9 @@ class PropertyTypeController extends Controller
      */
     public function index()
     {
-        $data=PropertyType::latest()->get();
-        return view('types.index',compact('data'));
+        $data['data'] = PropertyType::get();
+        $data['url']  = route('property-type.store');
+        return view('types.index', $data);
     }
 
     /**
@@ -72,12 +73,8 @@ class PropertyTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $data->update($request->only([
-        //     'name'
-        // ]));
-        $data=PropertyType::find($id);
-        $input=$request->all();
-        $data->fill($input)->save();
+        $request->validate(['name' => 'required']);
+        PropertyType::whereId($id)->update($request->only(['name', 'name']));
         return redirect('/property-type')->with('success', 'Data Updated successfully.');
     }
 
