@@ -7,7 +7,7 @@ use App\Libraries\MyTypeTrait\MyTypeTrait;
 
 class PropertyStatus extends Model
 {
-   // use MyTypeTrait;
+    use MyTypeTrait;
     protected $fillable = ['name', 'created_by', 'updated_by'];
     public function property()
     {
