@@ -2,22 +2,22 @@
 @section('content')
 <div class="container-fluid">
 @include('comp.alert')
-<a href="{{ route('property.create') }}" class="btn btn-info">Add New</a>
+<a href="{{ route('property.create') }}" class="btn btn-info">{!!trans('flexi.add')!!}</a>
 <br>
 <br>
 <table class="table table-bordered table-striped">
     <thead>
-        <th>{{ __('messages.name') }}</th>
-        <th>Code</th>
-        <th>{{ __('messages.type') }}</th>
-        <th>{{ __('messages.status') }}</th>
-        <th>{{ __('messages.zone') }}</th>
-        <th>{{ __('messages.shape') }}</th>
-        <th>{{ __('messages.rent_price') }}</th>
-        <th>{{ __('messages.sale_price') }}</th>
-        <th>{{ __('messages.list_price') }}</th>
-        <th>{{ __('messages.sold_price') }}</th>
-        <th>Action</th>
+        <th>{!!trans('flexi.code')!!}</th>
+        <th>{!!trans('flexi.name')!!}</th>
+        <th>{!!trans('flexi.type')!!}</th>
+        <th>{!!trans('flexi.status')!!}</th>
+        <th>{!!trans('flexi.zone')!!}</th>
+        <th>{!!trans('flexi.shape')!!}</th>
+        <th>{!!trans('flexi.rent_price')!!}</th>
+        <th>{!!trans('flexi.sale_price')!!}</th>
+        <th>{!!trans('flexi.list_price')!!}</th>
+        <th>{!!trans('flexi.sold_price')!!}</th>
+        <th>{!!trans('flexi.action')!!}</th>
     </thead>
     <tbody>
     @foreach($data as $row)
@@ -34,11 +34,11 @@
             <td>{{ @$row->sold_price }}</td>
             <td>
                 <form action="{{ route('property.destroy', $row->id) }}" method="post">
-                    <a href="{{ route('property.show', $row->id) }}" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>Show</a>
-                    <a href="{{ route('property.edit', $row->id) }}" class="btn btn-warning">Edit</a>
+                    <a href="{{ route('property.show', $row->id) }}" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>{!!trans('flexi.show')!!}</a>
+                    <a href="{{ route('property.edit', $row->id) }}" class="btn btn-warning">{!!trans('flexi.edit')!!}</a>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger">{!!trans('flexi.delete')!!}</button>
                 </form>
             </td>
         </tr>

@@ -7,7 +7,7 @@ use App\Libraries\MyTypeTrait\MyTypeTrait;
 
 class PropertyPriceHistory extends Model
 {
-	//use MyTypeTrait;
+	use MyTypeTrait;
     protected $fillable = ['property_id', 'rent_price', 'sale_price', 'list_price', 'sold_price'];
     public function property()
     {

@@ -15,7 +15,8 @@ class PropertyPriceHistoryController extends Controller
      */
     public function index()
     {
-        //
+        $data  = PropertyPriceHistory::with(['property'])->get();
+        return view('property_price_histories.index', compact('data'));
     }
 
     /**

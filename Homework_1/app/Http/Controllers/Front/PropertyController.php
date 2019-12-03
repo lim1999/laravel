@@ -122,6 +122,19 @@ class PropertyController extends Controller
             'sale_price', 'sale_price',
             'sold_price', 'sold_price',
         ]));
+        // $oldEntry = Property::find($property->id);
+        // $property->update($request->only([
+        //     'name',
+        //     'property_type_id',
+        //     'zone_id',
+        //     'preperty_status_id',
+        //     'shape_id',
+        //     'rent_price',
+        //     'list_price',
+        //     'sale_price',
+        //     'sold_price',
+        // ]));
+        // PropertyLib::createPropertyPriceHistory($property, $oldEntry);
         return redirect('property')->with('success', 'Data Updated successfully.');
     }
 

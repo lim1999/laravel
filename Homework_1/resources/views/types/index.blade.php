@@ -6,21 +6,22 @@
 <br>
 <table class="table table-bordered table-striped">
     <thead>
-        <th>{{ __('messages.name') }}</th>
-        <th>{{ __('messages.code') }}</th>
-        <th>{{ __('messages.action') }}</th>
+        <th>{!!trans('flexi.code')!!}</th>
+        <th>{!!trans('flexi.name')!!}</th>
+        <th>{!!trans('flexi.action')!!}</th>
     </thead>
     <tbody>
     @foreach($data as $row)
         <tr>
+                <td>{{ @$row->code }}</td>
             <td>{{ @$row->name }}</td>
-            <td>{{ @$row->code }}</td>
+            
             <td>
                 <form action="{{ route('property-type.destroy', @$row->id) }}" method="post">
-                    <a href="{{ route('property-type.edit', @$row->id) }}" class="btn btn-warning">{{ __('messages.edit') }}</a>
+                    <a href="{{ route('property-type.edit', @$row->id) }}" class="btn btn-warning">{!!trans('flexi.edit')!!}</a>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
+                    <button type="submit" class="btn btn-danger">{!!trans('flexi.delete')!!}</button>
                 </form>
             </td>
         </tr>

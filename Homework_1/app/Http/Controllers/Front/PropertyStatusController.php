@@ -14,7 +14,9 @@ class PropertyStatusController extends Controller
      */
     public function index()
     {
-       
+        $data['data'] = PropertyStatus::get();
+        $data['url']  = route('property-status.store');
+        return view('statuses.index', $data);
     }
 
     /**

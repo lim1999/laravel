@@ -25,6 +25,8 @@ Route::group([
     Route::resource('/zone', 'ZoneController');
     Route::resource('/property-price-history', 'PropertyPriceHistoryController');
 });
+
+Route::get('change-language', 'BasicController@changeLanguage')->name('basic.change-language');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

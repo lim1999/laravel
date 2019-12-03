@@ -17,7 +17,7 @@
         <label>Name</label>
         <input type="text" name="name" class="form-control" id="" value="{{ $data->name }}">
     </div>
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="btn btn-primary">{!!trans('flexi.update')!!}</button>
 </form>
 </div>
 @endsection

@@ -15,9 +15,9 @@ class ShapeController extends Controller
      */
     public function index()
     {
-        $data['data'] = PropertyStatus::get();
-        $data['url']  = route('property-status.store');
-        return view('types.index', $data);
+        $data['data'] = Shape::get();
+        $data['url']  = route('shape.store');
+        return view('shapes.index', $data);
     }
 
     /**
@@ -39,8 +39,8 @@ class ShapeController extends Controller
     public function store(Request $request)
     {
         $request->validate(['name' => 'required']);
-        $data = PropertyStatus::create($request->all());
-        return redirect('property-status')->with('success', 'Data Added successfully.');
+        $data = Shape::create($request->all());
+        return redirect('shape')->with('success', 'Data Added successfully.');
     }
 
     /**
@@ -62,8 +62,8 @@ class ShapeController extends Controller
      */
     public function edit($id)
     {
-        $data = PropertyStatus::findOrFail($id);
-        return view('statuses.edit', compact('data'));
+        $data = Shape::findOrFail($id);
+        return view('shapes.edit', compact('data'));
     }
 
     /**
@@ -76,8 +76,8 @@ class ShapeController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate(['name' => 'required']);
-        PropertyStatus::whereId($id)->update($request->only(['name', 'name']));
-        return redirect('property-status')->with('success', 'Data Updated successfully.');
+        Shape::whereId($id)->update($request->only(['name', 'name']));
+        return redirect('shape')->with('success', 'Data Updated successfully.');
     }
 
     /**
@@ -90,6 +90,6 @@ class ShapeController extends Controller
     {
         $data = Shape::findOrFail($id);
         $data->delete();
-        return redirect('/')->with('success', 'Data is successfully deleted');
+        return redirect('/shape')->with('success', 'Data is successfully deleted');
     }
 }

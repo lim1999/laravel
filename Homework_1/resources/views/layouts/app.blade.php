@@ -40,7 +40,8 @@
                             <a class="btn btn-primary" href="{{ route('property-type.index') }}">{{ __('Property Type') }}</a>
                             <a class="btn btn-primary" href="{{ route('zone.index') }}">{{ __('Zone') }}</a>
                             <a class="btn btn-primary" href="{{ route('shape.index') }}">{{ __('Shape') }}</a>
-                            
+                            <a href="{{ route('basic.change-language') }}?set_lang=en">EN</a>
+                            <a href="{{ route('basic.change-language') }}?set_lang=km">KM</a>
                         </li>
                     </ul>
 
